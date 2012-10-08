@@ -6,7 +6,7 @@ namespace Geek;
 use Nerd\Config
   , Nerd\Environment;
 
-define('APPLICATION_NS', 'geek');
+define('Nerd\APPLICATION_NS', 'geek');
 
 error_reporting(Config::get('error.reporting'));
 ini_set('display_errors', (Config::get('error.display', true) ? 'On' : 'Off'));

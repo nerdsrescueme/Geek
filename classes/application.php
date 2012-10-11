@@ -31,20 +31,20 @@ class Application implements \Nerd\Design\Initializable
 
 		$args = $_SERVER['argv'] and array_shift($args); // Remove geek from the args
 
-		for($i = 0; $i < \count($args); $i++)
+		for($i = 0; $i < count($args); $i++)
 		{
-			$arg = \explode('=', $args[$i]);
+			$arg = explode('=', $args[$i]);
 
 			// Arguments
-			if(\substr($arg[0], 0, 1) !== '-')
+			if(substr($arg[0], 0, 1) !== '-')
 			{
 				$app->args[$i] = $arg[0];
 			}
 
 			// Flags
-			if(\count($arg) > 1 or (\substr($arg[0], 0, 1) === '-'))
+			if(count($arg) > 1 or (substr($arg[0], 0, 1) === '-'))
 			{
-				$app->flags[\ltrim($arg[0], '-')] = isset($arg[1]) ? $arg[1] : true;
+				$app->flags[ltrim($arg[0], '-')] = isset($arg[1]) ? $arg[1] : true;
 			}
 		}
 	}
@@ -54,7 +54,7 @@ class Application implements \Nerd\Design\Initializable
 	 *
 	 * @var    array
 	 */
-	protected static $foreground_colors = array(
+	protected static $foregroundColors = array(
 		'black'        => '0;30',
 		'dark_gray'    => '1;30',
 		'blue'         => '0;34',
@@ -79,7 +79,7 @@ class Application implements \Nerd\Design\Initializable
 	 *
 	 * @var    array
 	 */
-	protected static $background_colors = array(
+	protected static $backgroundColors = array(
 		'black'      => '40',
 		'red'        => '41',
 		'green'      => '42',
@@ -106,11 +106,11 @@ class Application implements \Nerd\Design\Initializable
 			return $text;
 		}
 
-		$string = '\033['.static::$foreground_colors[$foreground].'m';
+		$string = '\033['.static::$foregroundColors[$foreground].'m';
 
 		if($background !== null)
 		{
-			$string .= '\033['.static::$background_colors[$background].'m';
+			$string .= '\033['.static::$backgroundColors[$background].'m';
 		}
 
 		return $text.'\033[0m';
@@ -123,7 +123,7 @@ class Application implements \Nerd\Design\Initializable
 	 */
  	public static function is_windows()
  	{ 
- 		return 'win' === \strtolower(\substr(\php_uname("s"), 0, 3));
+ 		return 'win' === strtolower(substr(php_uname("s"), 0, 3));
  	}
 
 	/**
@@ -188,7 +188,7 @@ class Application implements \Nerd\Design\Initializable
 	 */
 	public function input()
 	{
-		return \fgets(STDIN);
+		return fgets(STDIN);
 	}
 
 	/**
@@ -217,7 +217,7 @@ class Application implements \Nerd\Design\Initializable
 			$text = static::color($text, $foreground, $background);
 		}
 
-		\fwrite(STDOUT, $text);
+		fwrite(STDOUT, $text);
 	}
 
 	/**
@@ -236,7 +236,7 @@ class Application implements \Nerd\Design\Initializable
 			$text = static::color($text, $foreground, $background);
 		}
 
-		\fwrite(STDERR, $text.PHP_EOL);
+		fwrite(STDERR, $text.PHP_EOL);
 	}
 
 	/**
@@ -248,7 +248,7 @@ class Application implements \Nerd\Design\Initializable
 	{
 		$this->error($text, $foreground, $background);
 
-		\ob_end_clean();
+		ob_end_clean();
 		exit(0);
 	}
 	
@@ -259,7 +259,7 @@ class Application implements \Nerd\Design\Initializable
 	 */
 	public function clear()
 	{
-		static::is_windows() ? $this->write() : \fwrite(STDOUT, \chr(27)."[H".\chr(27)."[2J");
+		static::is_windows() ? $this->write() : fwrite(STDOUT, chr(27)."[H".chr(27)."[2J");
 	}
 
 	/**

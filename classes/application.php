@@ -140,6 +140,13 @@ class Application implements \Nerd\Design\Initializable
 	 */
 	public $flags;
 
+	/**
+	 * Code to use upon exit
+	 *
+	 * @var integer
+	 */
+	protected $code = 0;
+
 
 	/**
 	 * Geek Command Line Tool
@@ -275,6 +282,16 @@ class Application implements \Nerd\Design\Initializable
 	}
 
 	/**
+	 * Get the argument array
+	 *
+	 * @return    array
+	 */
+	public function args()
+	{
+		return $this->args;
+	}
+
+	/**
 	 * Get a flag by name
 	 *
 	 * @param    string     Flag name
@@ -284,5 +301,20 @@ class Application implements \Nerd\Design\Initializable
 	public function flag($name, $default = false)
 	{
 		return isset($this->flags[$name]) ? $this->flags[$name] : $default;
+	}
+
+	public function fail($code = 1)
+	{
+		$this->code = $code;
+	}
+
+	public function succeed()
+	{
+		$this->code = 0;
+	}
+
+	public function send()
+	{
+		exit($this->code);
 	}
 }

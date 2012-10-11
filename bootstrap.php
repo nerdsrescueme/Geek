@@ -14,3 +14,4 @@ date_default_timezone_set(Config::get('application.timezone', 'UTC'));
 \Nerd\Str::$mbString and mb_internal_encoding(Config::get('application.encoding', 'UTF-8'));
 
 Application::instance()->execute();
+Application::instance()->send();

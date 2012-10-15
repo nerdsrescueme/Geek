@@ -5,6 +5,6 @@
  */
 return [
 
-	'key' => 'value'
+    'key' => 'value'
 
 ];

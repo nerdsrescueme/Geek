@@ -87,7 +87,6 @@ class Application implements \Nerd\Design\Initializable
         'light_gray' => '47',
     );
 
-
     /**
      * Change text to a color from the foreground and background arrays
      *
@@ -141,7 +140,6 @@ class Application implements \Nerd\Design\Initializable
      * @var integer
      */
     protected $code = 0;
-
 
     /**
      * Geek Command Line Tool

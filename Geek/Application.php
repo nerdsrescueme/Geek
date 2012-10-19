@@ -10,6 +10,8 @@
  */
 namespace Geek;
 
+use \Nerd\Http\Response;
+
 /**
  * Geek Command Line Tool
  *
@@ -23,7 +25,8 @@ namespace Geek;
  */
 class Application implements \Nerd\Design\Initializable
 {
-    use \Nerd\Design\Creational\Singleton;
+    use \Nerd\Design\Creational\Singleton
+	  , \Nerd\Design\Eventable;
 
     public static function __initialize()
     {
@@ -304,6 +307,7 @@ class Application implements \Nerd\Design\Initializable
 
     public function send()
     {
+		$this->execute();
         exit($this->code);
     }
 }

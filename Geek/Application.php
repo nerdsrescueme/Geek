@@ -26,7 +26,7 @@ use \Nerd\Http\Response;
 class Application implements \Nerd\Design\Initializable
 {
     use \Nerd\Design\Creational\Singleton
-	  , \Nerd\Design\Eventable;
+      , \Nerd\Design\Eventable;
 
     public static function __initialize()
     {
@@ -307,7 +307,7 @@ class Application implements \Nerd\Design\Initializable
 
     public function send()
     {
-		$this->execute();
+        $this->execute();
         exit($this->code);
     }
 }

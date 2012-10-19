@@ -2,5 +2,8 @@
 
 return function()
 {
-	return 'geek';
+	return [
+		'namespace' => 'geek',
+		'storage' => 'application',
+	];
 };

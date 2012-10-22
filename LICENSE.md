@@ -1,3 +1,6 @@
+MIT License
+===========
+
 Copyright (c) 2012 Frank Bardon Jr & Chase Hutchins
 
 Permission is hereby granted, free of charge, to any person
